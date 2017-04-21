@@ -42,6 +42,7 @@ var Game = (function(){
             if(time>play.shootTime){
                 play.shootTime = time + play.shootInterval;
                 this.pos = this.bulletPos[play.shootType - 1];
+                console.log("length  "+this.pos.length+"   --- "+pos[0]);
                 for(var index = 0;index<pos.length;index++){
                     var bullet = Laya.Pool.getItemByClass("player",Player);
                     bullet.init("FIGHT",play.camp,1,-4-play.shootType-Math.floor(this.level/15),1,1);
@@ -53,17 +54,6 @@ var Game = (function(){
             }
         }
         }
-        // if(play.shootType > 0){
-        //     var time = Laya.Browser.now();
-        //     if(time>play.shootTime){
-        //         play.shootTime = time + play.shootInterval;
-        //         var bullet = Laya.Pool.getItemByClass("player",Player);
-        //         bullet.init("FIGHT",play.camp,1,-5,1);
-        //         bullet.isShoot = true;
-        //         bullet.pos(play.x+50,play.y-play.hitRadius -10);
-        //         Laya.stage.addChild(bullet);
-        //     }
-        // }
         for(var i = Laya.stage.numChildren-1;i>0;i--){
             var play1 = Laya.stage.getChildAt(i);
             if(play1.hp<1) continue;
@@ -100,15 +90,13 @@ var Game = (function(){
             play.visible = false;
         }
         if(play.hp > 0){
-            play.playAction("die");
+            play.playAction("hit");
         }else{
             if(play.isShoot){
                 play.visible = false;
             }else{
-                play.playAction("die");
-                 console.log("die   ---  "+play.type);
-                if(play.type == "AIR3"){
-                    // console.log("hhhhhhhhh");
+                play.playAction("die");       
+                if(play.type === "AIR3"){
                     var type = 1;//Math.random() < 0.7?2:3;
                     var item = Laya.Pool.getItemByClass("player",Player);
                     item.init("yao",play.camp,1,1,15,type);

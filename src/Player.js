@@ -21,24 +21,31 @@ var Player = (function(_super){
         if(!Player.cached){
             Player.cached = true;
             Laya.Animation.createFrames(["res/me/player_fly.png"],"player_fly");
-            Laya.Animation.createFrames(["res/me/me_die1.png","res/me/me_die2.png","res/me/me_die.png"
-            ,"res/me/me_die4.png","player_die"]);
+            Laya.Animation.createFrames(["res/me/me_die1.png","res/me/me_die2.png","res/me/me_die3.png"
+            ,"res/me/me_die4.png","player_hit"]);
+
             Laya.Animation.createFrames(["res/air1/plain1.png"],"AIR1_fly");
             Laya.Animation.createFrames(["res/air1/plain1_die1.png",
-            "res/air1/plain1_die2.png","res/air1/plain1_die3.png"],"AIR1_die");
+            "res/air1/plain1_die2.png"],"AIR1_hit");
+            Laya.Animation.createFrames(["res/air1/plain1_die2.png",
+            "res/air1/plain1_die3.png"],"AIR1_die");
 
             Laya.Animation.createFrames(["res/air2/plain2.png"],"AIR2_fly");
             Laya.Animation.createFrames(["res/air2/plain2_die1.png",
-            "res/air2/plain2_die2.png","res/air2/plain2_die3.png","res/air2/plain2_die4.png"],"AIR2_die");
+            "res/air2/plain2_die2.png","res/air2/plain2_die3.png"],"AIR2_hit");
+            Laya.Animation.createFrames(["res/air2/plain2_die2.png",
+            "res/air2/plain2_die3.png","res/air2/plain2_die4.png"],"AIR2_die");
 
-             Laya.Animation.createFrames(["res/air3/plain3.png"],"AIR3_fly");
+            Laya.Animation.createFrames(["res/air3/plain3.png"],"AIR3_fly");
             Laya.Animation.createFrames(["res/air3/plain3_die1.png",
             "res/air3/plain3_die2.png","res/air3/plain3_die3.png","res/air3/plain3_die4.png"
-            ,"res/air3/plain3_die5.png","res/air3/plain3_die6.png"],"AIR3_die");
+            ,"res/air3/plain3_die5.png"],"AIR3_hit");
+             Laya.Animation.createFrames(["res/air3/plain3_die2.png","res/air3/plain3_die3.png",
+             "res/air3/plain3_die4.png","res/air3/plain3_die5.png","res/air3/plain3_die6.png"],"AIR3_die");
 
             Laya.Animation.createFrames(["res/fight.png"],"FIGHT_fly");
 
-            Laya.Animation.createFrames(["res/yao.png"],"yao_fly");
+            Laya.Animation.createFrames(["res/danyao.png"],"yao_fly");
         }
         if(!this.body){
             this.body = new Laya.Animation();

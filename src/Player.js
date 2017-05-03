@@ -3,6 +3,9 @@ var Player = (function(_super){
     var _height = 8;
     function Player(){
         Player.super(this);
+        this.tempFlag = -1;
+        this._time = _time;
+        this._height = _height;
     }
     Player.cached = false;
     Laya.class(Player,"Player",_super);
@@ -34,6 +37,10 @@ var Player = (function(_super){
                 this.y +=_height;
             }
         }
+        // console.log("    "+this.type);
+        // if(this.type == "bk2" || this.type == "bk1"){
+        //     this.y += 5;
+        // }
         
     }
 
@@ -53,7 +60,8 @@ var Player = (function(_super){
         this.action = action;
         this.body.play(0,true,this.type+"_"+action);
         this.bound = this.body.getBounds();
-        this.body.pos(-this.bound.width/2,-this.bound.height/2);
+        this.body.pos(-this.bound.width/2,-30);
+        console.log(" this.body.getBounds()      "+ this.body.getBounds());
     }
     return Player;
 })(Laya.Sprite);

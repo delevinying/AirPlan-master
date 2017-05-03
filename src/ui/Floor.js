@@ -39,12 +39,12 @@
         //如果不开启autoSize 父容器的宽度和高度无法获取
         this.autoSize = true;
         //初始化的时候将坐标放到屏幕右边
-        this.x = 852;
-        //y坐标取一个随机值 为什么是32 因为我们的整个素材是 32 * 20 拼起来的
-        this.y = 32 * 6 + 32 * parseInt(8 * Math.random());
+        // this.x = 852;
+        // //y坐标取一个随机值 为什么是32 因为我们的整个素材是 32 * 20 拼起来的
+        // this.y = 32 * 6 + 32 * parseInt(8 * Math.random());
         if(this.bg == null){
             //贴图纹理
-            this.bgTexture = Laya.loader.getRes("res/bk/bk2.png");
+           // this.bgTexture = Laya.loader.getRes("res/bk/bk2.png");
              
             // this.bg = new laya.display.Sprite();
             // // this.bg.loadImage("res/bk/bk2.png");
@@ -58,9 +58,11 @@
              
             //因为上面的图片是截取的 所以右边可能没有图片了 这里补一个
             this.rightBg = new laya.display.Sprite();
-            this.rightBg.graphics.drawTexture(this.bgTexture, 0, 0, 100, 30);
+            this.rightBg.loadImage("res/bk/bk2.png");
+           // this.rightBg.graphics.drawTexture(this.bgTexture, 0, 0, 100, 10);
             // this.rightBg.graphics.drawTexture(laya.resource.Texture.createFromTexture(this.bgTexture,32*29,0,32,96), 0, 0, 32, 96);
-            this.rightBg.width = 100;
+            this.rightBg.width = 101;
+            this.rightBg.height = 10;
             this.addChild(this.rightBg);
 
             // this.bg1 = new Laya.Sprite();
@@ -76,7 +78,7 @@
             break;
             default:
                 //随机计算一个宽度 当然 最小是3倍 以防难度太难
-                var _w = 100;//32 * (3 + parseInt(19 * Math.random()));
+                var _w = 105;//32 * (3 + parseInt(19 * Math.random()));
                 // this.bg.graphics.clear();
                 //这里用到了 laya.resource.Texture.createFromTexture 就是根据宽度和高度来截取一个图片并且返回一个Texture对象
                 // this.bg.graphics.drawTexture(laya.resource.Texture.createFromTexture(this.bgTexture,0,0,_w,96), 0, 0, _w, 96);
@@ -105,7 +107,8 @@
  
     _proto.onLoop = function(){
         //让地板的速度和移动比背景快一点
-        this.y += 0;
+        console.log("Floor   tempFlag  ");
+        this.y += 1;
          
         //判断是否除了边界 如果出了 就通知生成新的floor 这里增加一个变量来判断当前是否已经通知外部了
         //因为此处是一个循环的处理
@@ -128,6 +131,7 @@
         if(x > this.x && x < (this.x + this.width) && y > this.y && y < (this.y + this.height)){
             return true;
         }
+        // console.log("height   "+this.height);
         return false;
     }
 })();

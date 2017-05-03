@@ -1,6 +1,4 @@
 (function () {
-	
-    
     /**
      * 地板地图类
      * 
@@ -17,10 +15,9 @@
     _proto.init = function(){
         console.log("开始加砖块");
         //添加地板
-        
         //创建一个帧循环处理函数
         Laya.timer.frameLoop(1, this, this.onLoop);   
-        this.createFloor(5);
+    //    this.createFloor(5);
     }
     
     _proto.onLoop = function(){
@@ -32,20 +29,21 @@
 			Pool.recover("floor",floor);
         }
         // console.log("    "+Laya.timer.currFrame);
-        if(Laya.timer.currFrame%600=== 0||Laya.timer.currFrame ===2){
-            // console.log("createFloor   ");
-            this.createFloor(5);
+        if(Laya.timer.currFrame%60000=== 0||Laya.timer.currFrame ===2){
+            console.log("createFloor   ");
+           this.createFloor(10);
         }
     }
 
     _proto.createFloor = function(num){
-        var _floor = this.addFloor(1);
-            _floor.pos(200,700);
-            Laya.stage.addChild(_floor);
+        // var _floor = this.addFloor(1);
+        // _floor.pos(200,700);
+        // this.addChild(_floor);
         for(var i=0;i<num;i++){
             var floor = this.addFloor(1);
             floor.pos(Math.random()*380+50,Math.random()*700+20);
-            Laya.stage.addChild(floor);
+            // Laya.stage.addChild(floor);
+            this.addChild(floor);
         }
     }
     

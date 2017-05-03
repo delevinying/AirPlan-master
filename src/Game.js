@@ -1,6 +1,11 @@
 var Game = (function(){
     (function Game(){
         Laya.init(480,800);
+        Laya.stage.scaleMode = "showall";
+        //设置剧中对齐
+        Laya.stage.alignH = "center";
+        //设置横屏
+        Laya.stage.screenMode = "horizontal";
         this.bg = new window.Background();
         this._floor = null;
         Laya.stage.addChild(this.bg);
@@ -21,18 +26,13 @@ var Game = (function(){
     }
 
     function onLoop(){
-        if(Laya.timer.currFrame%6=== 0){
-            // console.log("createEnemy");
-           // createEnemy(8);
-        }
-
         //循环检测玩家是否指地板上
-        console.log(" a   "+this._floor.numChildren);
+      //  console.log("numChildren   "+this._floor.numChildren);
         for(var i = this._floor.numChildren - 1;i>-1;i--){
             var floor = this._floor.getChildAt(i);
             //如果是
-            console.log(this._floor.x+"    "+floor.checkHit(this.player.x,this.player.y));
             if(floor.checkHit(this.player.x,this.player.y)){
+           //     console.log("player     x  "+this.player.x+"   y "+this.player.y+"\n"+"  floor   x "+floor.x+"  y  "+floor.y);
                 this.player.y =  floor.y;
                 this.player.onReset();
             }

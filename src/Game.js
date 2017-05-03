@@ -2,6 +2,7 @@ var Game = (function(){
     (function Game(){
         Laya.init(480,800);
         this.bg = new window.Background();
+        this._floor = null;
         Laya.stage.addChild(this.bg);
         onLoaded();
     })();
@@ -26,11 +27,11 @@ var Game = (function(){
         }
 
         //循环检测玩家是否指地板上
-        console.log(" a   "+this._floor.numChildren - 1);
+        console.log(" a   "+this._floor.numChildren);
         for(var i = this._floor.numChildren - 1;i>-1;i--){
             var floor = this._floor.getChildAt(i);
             //如果是
-            console.log("    "+floor.checkHit(this.player.x,this.player.y));
+            console.log(this._floor.x+"    "+floor.checkHit(this.player.x,this.player.y));
             if(floor.checkHit(this.player.x,this.player.y)){
                 this.player.y =  floor.y;
                 this.player.onReset();

@@ -34,11 +34,14 @@
         // console.log("    "+Laya.timer.currFrame);
         if(Laya.timer.currFrame%600=== 0||Laya.timer.currFrame ===2){
             // console.log("createFloor   ");
-            this.createFloor(10);
+            this.createFloor(5);
         }
     }
 
     _proto.createFloor = function(num){
+        var _floor = this.addFloor(1);
+            _floor.pos(200,700);
+            Laya.stage.addChild(_floor);
         for(var i=0;i<num;i++){
             var floor = this.addFloor(1);
             floor.pos(Math.random()*380+50,Math.random()*700+20);

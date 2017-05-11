@@ -6,6 +6,7 @@ var Player = (function(_super){
         this.tempFlag = -1;
         this._time = _time;
         this._height = _height;
+        this._down = false;//是否是下落状态
     }
     Player.cached = false;
     Laya.class(Player,"Player",_super);
@@ -31,21 +32,22 @@ var Player = (function(_super){
     _proto.onLoop = function(){
         if(this.type == "player"){
             tempFlag ++;
+          //  console.log("player     tempFlag "+tempFlag);
             if(tempFlag< _time && tempFlag>=0){
+                //上升
                 this.y +=-_height;
+                this._down = false;
             }else if(tempFlag>=_time){
+                //下降
                 this.y +=_height;
+                this._down = true;
             }
         }
-        // console.log("    "+this.type);
-        // if(this.type == "bk2" || this.type == "bk1"){
-        //     this.y += 5;
-        // }
-        
     }
 
     _proto.onReset = function(){
         tempFlag = -1;
+        this._down = false;
     }
 
     _proto.onComplete = function(){
@@ -61,7 +63,7 @@ var Player = (function(_super){
         this.body.play(0,true,this.type+"_"+action);
         this.bound = this.body.getBounds();
         this.body.pos(-this.bound.width/2,-30);
-        console.log(" this.body.getBounds()      "+ this.body.getBounds());
+      //  console.log(" this.body.getBounds()      "+ this.body.getBounds());
     }
     return Player;
 })(Laya.Sprite);

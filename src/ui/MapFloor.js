@@ -31,7 +31,7 @@
         // console.log("    "+Laya.timer.currFrame);
         if(Laya.timer.currFrame%60000=== 0||Laya.timer.currFrame ===2){
             // console.log("createFloor   ");
-           this.createFloor(50);
+           this.createFloor(20);
         }
 
         
@@ -54,21 +54,21 @@
             this.addChild(floor);
 
 
-        // for(var i=0;i<num;i++){
-        //     var floor = this.addFloor(1);
-        //     floor.pos(Math.random()*50,0+i*Math.random()*150+80);
-        //     this.addChild(floor);
-        // }
-        // for(var i=0;i<num;i++){
-        //     var floor = this.addFloor(1);
-        //     floor.pos(180,0+i*120);
-        //     this.addChild(floor);
-        // }
-        // for(var i=0;i<num;i++){
-        //     var floor = this.addFloor(1);
-        //     floor.pos(290,0+i*120);
-        //     this.addChild(floor);
-        // }
+        for(var i=0;i<num;i++){
+            var floor = this.addFloor(1);
+            floor.pos(Math.random()*50,0+i*Math.random()*150+80);
+            this.addChild(floor);
+        }
+        for(var i=0;i<num;i++){
+            var floor = this.addFloor(1);
+            floor.pos(180,0+i*Math.random()*150+80);
+            this.addChild(floor);
+        }
+        for(var i=0;i<num;i++){
+            var floor = this.addFloor(1);
+            floor.pos(290,0+i*Math.random()*150+80);
+            this.addChild(floor);
+        }
 
     }
     

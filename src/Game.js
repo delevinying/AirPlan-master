@@ -19,8 +19,7 @@ var Game = (function(){
         this.player.pos(200,500);
         Laya.stage.addChild(this.player);
         Laya.stage.on(Laya.Event.MOUSE_DOWN,this,onMouseDown);
-        Laya.stage.on(Laya.Event.MOUSE_UP,this,onMouseUp);
-        
+        Laya.stage.on(Laya.Event.MOUSE_UP,this,onMouseUp);   
         Laya.timer.frameLoop(1,this,onLoop);
         this._floor = new MapFloor();
         Laya.stage.addChild(this._floor);
